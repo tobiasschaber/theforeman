@@ -11,7 +11,7 @@ class theforeman::preparation::preparepackages {
 	Exec['wget-foreman-pubkey'] -> 
 	Exec['apt-update'] ->
 	File['/etc/apt-cacher/apt-cacher.conf'] ->
-	Exec['apt-cacher-import'] ->
+	Exec['apt-cacher-import']
 	
 	## PROCEDURE DEFINITION ##
 	
@@ -27,7 +27,7 @@ class theforeman::preparation::preparepackages {
 		line	=> 'deb http://deb.theforeman.org/ plugins 1.8',
 	}
 	
-	exec { "wget-foreman-pubkey".
+	exec { "wget-foreman-pubkey":
 		command => "wget -q http://deb.theforeman.org/pubkey.gpg -O- | apt-key add -",
 		path	=> "/usr/bin",
 		timeout => 1000,
