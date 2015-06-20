@@ -5,8 +5,8 @@
 
 class theforeman::preparation::preparation {
 
-	include theforeman::preparation::createusers
 	include theforeman::preparation::preparepackages
+	include theforeman::preparation::createusers
 	include theforeman::preparation::installpackages
 	include theforeman::preparation::preparenetwork
 	include theforeman::preparation::startservices
@@ -18,8 +18,8 @@ class theforeman::preparation::preparation {
 
 	# not sure if this is a good way to teardown apparmor completely...
 	Exec['teardown-apparmor'] ->
-	Class['theforeman::preparation::createusers'] ->
 	Class['theforeman::preparation::preparepackages'] ->
+	Class['theforeman::preparation::createusers'] ->
 	Class['theforeman::preparation::installpackages'] ->
 	Class['theforeman::preparation::preparenetwork'] ->
 	Class['theforeman::preparation::startservices']
