@@ -47,15 +47,15 @@ class theforeman::preparation::installpackages {
 	}
 	
 	package{ "debconf-utils":
-		ensure	=> installed,
+		ensure	=> "installed",
 	}
 	
 	package { "foreman-installer":
-		ensure => ['1.8.2-1', installed],
+		ensure => ['1.8.2-1', "installed"],
 	}
 	
 	package { "iptables-persistent":
-		ensure	=> installed,
+		ensure	=> "installed",
 	}
 
 	package { "isc-dhcp-server":
@@ -63,7 +63,7 @@ class theforeman::preparation::installpackages {
 	}
 
 	package { "apt-cacher":
-		ensure	=> installed,
+		ensure	=> "installed",
 	}
 	
 }

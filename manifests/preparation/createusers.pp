@@ -20,21 +20,21 @@ class theforeman::preparation::createusers {
 
 	# adding user 'foreman-proxy' to group 'bind', as this users needs to read the keyfile
 	user { "foreman-proxy":
-		ensure	=> present,
+		ensure	=> "present",
 		groups	=> ['bind'],
 	}
 	
-	file_line { 'sudo_rule_v1':
+	file_line { "sudo_rule_v1":
 		path	=> '/etc/sudoers',
 		line	=> 'Defaults:foreman-proxy !requiretty',		
 	}
 
-	file_line { 'sudo_rule_v2':
+	file_line { "sudo_rule_v2":
 		path	=> '/etc/sudoers',
 		line	=> 'foreman-proxy ALL = NOPASSWD: /usr/bin/puppet kick *',
 	}
 	 
-	file_line { 'sudo_rule_v3':
+	file_line { "sudo_rule_v3":
 		path	=> '/etc/sudoers',
 		line	=> 'foreman-proxy ALL = NOPASSWD: /usr/bin/puppet cert *',
 	}

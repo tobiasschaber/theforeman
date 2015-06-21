@@ -14,7 +14,7 @@ class theforeman::preparation::startservices {
 	
 	# start iptables-persistent
 	service { "iptables-persistent":
-		ensure	=> running,
+		ensure	=> "running",
 	}
 	
 	service { "apt-cacher":

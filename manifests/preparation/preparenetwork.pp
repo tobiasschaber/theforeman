@@ -39,7 +39,7 @@ class theforeman::preparation::preparenetwork {
 	}
 	
 	file { '/tmp/iptables-persistent.seed':
-		ensure => present,
+		ensure => "present",
 		source => 
 			'puppet:///modules/theforeman/System/iptables-persistent.seed',
 	}
