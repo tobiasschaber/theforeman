@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo puppet apply --debug /home/server/theforeman/manifests/main.pp
+sudo puppet apply --debug /home/server/theforeman/manifests/init.pp

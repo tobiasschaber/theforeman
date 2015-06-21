@@ -3,9 +3,9 @@
 # this script installs puppet, downloads the theforeman puppet module and installs it into
 # puppet.
 
+sudo apt-get install --yes openssh-server git
 
 cd $HOME
-sudo apt-get install --yes openssh-server git
 
 # clone the foreman installer puppet module from git
 git clone https://bitbucket.org/tobias_schaber/theforeman.git
@@ -18,6 +18,9 @@ wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
 sudo dpkg -i puppetlabs-release-trusty.deb
 sudo apt-get update	
 sudo apt-get install --yes puppet
+
+# cleanup the puppet.conf file to remove the deprecated "templatedir" line
+sed -i -e /templatedir/d /etc/puppet/puppet.conf
 
 
 # ATTENTION! This is deactivated because its the oldstyle art of adding cloudbox to puppet.

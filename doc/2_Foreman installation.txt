@@ -4,7 +4,7 @@ Achtung! Diese Installationsanleitung setzt die vorherige Durchführung von "1_Ub
 
 3. INSTALLATION VIA PUPPET
 ---------------------------------------------------------------------------------------------
-	1.  cd git/foreman-poc/files/System
+	1.  cd $HOME/theforeman
 	2.  chmod +x run-puppet.sh
 	3.  ./run-puppet.sh
 

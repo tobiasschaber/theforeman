@@ -42,6 +42,7 @@ Please follow this instructions to get the operating system running as needed:
 
 2. POST-INSTALLATION
 ---------------------------------------------------------------------------------------------
+	0. Start as User "server", not su
 	1.  wget https://bitbucket.org/tobias_schaber/theforeman/raw/70284e066a17df2c7e8e2ae06393e999da9b4fd1/post-install.sh
 	3.  chmod +x post-install.sh
 	4.  ./post-install.sh
