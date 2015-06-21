@@ -21,6 +21,7 @@ class theforeman::preparation::preparation {
 	Class['theforeman::preparation::preparepackages'] ->
 	Class['theforeman::preparation::createusers'] ->
 	Class['theforeman::preparation::installpackages'] ->
+	Class['theforeman::preparation::finishpackages'] ->
 	Class['theforeman::preparation::preparenetwork'] ->
 	Class['theforeman::preparation::startservices']
 	

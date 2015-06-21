@@ -33,10 +33,7 @@ class theforeman::preparation::preparepackages {
 	->
 	File['prepare-apt-foreman-trusty'] -> 
 	File_Line['prepare-apt-foreman-plugins'] -> 
-	Exec['wget-foreman-pubkey'] -> 
-	Exec['apt-update'] ->
-	File['/etc/apt-cacher/apt-cacher.conf'] ->
-	Exec['apt-cacher-import']
+	Exec['apt-update']
 	
 	## PROCEDURE DEFINITION ##
 	
@@ -56,18 +53,7 @@ class theforeman::preparation::preparepackages {
 		command	=> "/usr/bin/apt-get update",
 	}
 	
-	file { '/etc/apt-cacher/apt-cacher.conf':
-		ensure	=> present,
-		owner	=> root,
-		group	=> root,
-		mode	=> 644,
-		source	=> "puppet:///modules/theforeman/System/apt-cacher.conf",
-	}
-	
-	exec {'apt-cacher-import':
-		command => "apt-cacher-import.pl -r /var/cache/apt/archives",
-		path	=> "/usr/share/apt-cacher/",
-	}
+
 	
 
 }
