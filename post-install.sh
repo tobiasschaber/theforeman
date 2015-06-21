@@ -37,6 +37,6 @@ rm puppetlabs-release-trusty.deb
 #sudo reboot
 
 # cleanup the puppet.conf file to remove the deprecated "templatedir" line
-sed -i -e /templatedir/d /etc/puppet/puppet.conf
+sudo sed -i -e /templatedir/d /etc/puppet/puppet.conf
 
 # CONTINUE WITH run-puppet.sh
