@@ -9,6 +9,7 @@ class theforeman::preparation::preparation {
 	include theforeman::preparation::createusers
 	include theforeman::preparation::installpackages
 	include theforeman::preparation::preparenetwork
+	include theforeman::preparation::finishpackages
 	include theforeman::preparation::startservices
 	
 	exec { 'teardown-apparmor':
