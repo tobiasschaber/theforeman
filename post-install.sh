@@ -19,10 +19,6 @@ sudo dpkg -i puppetlabs-release-trusty.deb
 sudo apt-get update	
 sudo apt-get install --yes puppet
 
-# cleanup the puppet.conf file to remove the deprecated "templatedir" line
-sed -i -e /templatedir/d /etc/puppet/puppet.conf
-
-
 # ATTENTION! This is deactivated because its the oldstyle art of adding cloudbox to puppet.
 # 			 we want the new style
 #sudo cp $HOME/git/foreman-poc/files/System/puppet.conf /etc/puppet/
@@ -40,6 +36,7 @@ rm puppetlabs-release-trusty.deb
 # ATTENTION! I dont think that a reboot is still required!
 #sudo reboot
 
-
+# cleanup the puppet.conf file to remove the deprecated "templatedir" line
+sed -i -e /templatedir/d /etc/puppet/puppet.conf
 
 # CONTINUE WITH run-puppet.sh
