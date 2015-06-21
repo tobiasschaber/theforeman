@@ -13,7 +13,7 @@ fi
 
 wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
 sudo dpkg -i puppetlabs-release-trusty.deb
-sudo apt-get update
+sudo apt-get update	
 sudo apt-get install --yes puppet
 
 #sudo cp $HOME/git/foreman-poc/files/System/puppet.conf /etc/puppet/
@@ -21,5 +21,8 @@ sudo apt-get install --yes puppet
 sudo puppet module install --force puppetlabs-stdlib
 
 rm puppetlabs-release-trusty.deb
+
+
+sudo cp -r theforeman /etc/puppet/modules
 
 sudo reboot

@@ -5,6 +5,7 @@ class theforeman::preparation::createusers {
 
 	## INSTALLATION SEQUENCE DEFINITION ##
 	
+	Group['bind'] ->
 	User['dhcpd'] ->
 	User['foreman-proxy'] ->
 	File_Line['sudo_rule_v1'] ->
@@ -14,6 +15,9 @@ class theforeman::preparation::createusers {
 	
 	## PROCEDURE DEFINITION ##
 	
+	group { "bind":
+		ensure => "present",
+	}
 	
 	# adding user 'dhcpd' to group 'bind', as this users needs to read the keyfile
 	user { "dhcpd":
