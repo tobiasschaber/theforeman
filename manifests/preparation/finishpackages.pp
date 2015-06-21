@@ -1,7 +1,8 @@
 
+# this class makes some adjustments to the packages which
+# have been installed before.
+
 class theforeman::preparation::finishpackages {
-
-
 
 	## INSTALLATION SEQUENCE DEFINITION ##
 

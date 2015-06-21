@@ -4,6 +4,9 @@
 
 class theforeman::preparation::preparepackages {
 
+
+	## FUNCTION DEFINITION 
+	
 	define aptkey($ensure, $apt_key_url = 'http://deb.theforeman.org') {
 	  case $ensure {
 		'present': {
@@ -34,6 +37,7 @@ class theforeman::preparation::preparepackages {
 	File['prepare-apt-foreman-trusty'] -> 
 	File_Line['prepare-apt-foreman-plugins'] -> 
 	Exec['apt-update']
+	
 	
 	## PROCEDURE DEFINITION ##
 	
