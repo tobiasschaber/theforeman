@@ -16,7 +16,7 @@ class theforeman::coreinstall::coreinstall {
 	
 	
 	# prepare the options for the foreman installer
-	file { "/etc/foreman/foreman-installer-answers.yaml.":
+	file { "/etc/foreman/foreman-installer-answers.yaml":
 		ensure	=> present,
 		source => 'puppet:///modules/theforeman/installation/foreman-installer-answers.yaml',
 		owner	=> root,
