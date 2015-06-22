@@ -18,7 +18,6 @@
 	File['/var/lib/tftpboot/boot/Ubuntu-12.10-x86_64-linux'] ->
 	Exec['wget initrd.img'] ->
 	Exec['wget vmlinuz'] ->
-	File['/etc/foreman/foreman-installer-answers.yaml'] ->
 	File['/usr/share/foreman-installer/modules/foreman_proxy/manifests/proxydhcp.pp'] ->
 	File['/var/lib/tftpboot/boot/foreman-discovery-image-latest.el6.iso-img'] ->
 	File['/var/lib/tftpboot/boot/foreman-discovery-image-latest.el6.iso-vmlinuz'] ->
@@ -144,15 +143,7 @@ exec { "wget vmlinuz":
         timeout => 1000,
 }
 
-# options for foreman-installer
-file { "/etc/foreman/foreman-installer-answers.yaml":
-	ensure	=> present,
-	source	=> "/home/server/git/foreman-poc/files/Foreman/answers.yaml",
-	owner	=> root,
-	group	=> root,
-	mode	=> 600,
-	
-}
+
 
 # modifying foreman-installer to support DDNS
 file { "/usr/share/foreman-installer/modules/foreman_proxy/manifests/proxydhcp.pp":
@@ -190,13 +181,7 @@ file { '/var/lib/tftpboot/boot/foreman-discovery-image-latest.el6.iso-vmlinuz':
 
 
 
-# installation foreman
-exec { 'foreman-installer':
-	command	=> "/usr/sbin/foreman-installer --enable-foreman-proxy --foreman-proxy-trusted-hosts=localhost --foreman-admin-password changeme",
-	environment => ["HOME=/home/server"],
-	timeout => 1000,
-	
-}
+
 
 
 

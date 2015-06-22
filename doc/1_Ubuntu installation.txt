@@ -45,6 +45,6 @@ Please follow this instructions to get the operating system running as needed:
 	0. Start as User "server", not su
 	
 	# ACHTUNG! NEUSTES FILE AUS BITBUCKET ZIEHEN!
-	1.  wget https://bitbucket.org/tobias_schaber/theforeman/raw/84adf53ecbfd5272d5e336bed9f173d0258f2724/post-install.sh
+	1.  wget https://bitbucket.org/tobias_schaber/theforeman/raw/7c46f5150b182d65d095f49c3e563ad318172101/post-install.sh
 	3.  chmod +x post-install.sh
 	4.  ./post-install.sh
