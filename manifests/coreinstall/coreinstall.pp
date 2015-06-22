@@ -5,9 +5,11 @@
 
 class theforeman::coreinstall::coreinstall {
 
+	include theforeman::coreinstall::preparepuppet
 
 	## INSTALLATION SEQUENCE DEFINITION ##
 	
+	Class['theforeman::coreinstall::preparepuppet'] ->
 	File['/etc/foreman/foreman-installer-answers.yaml'] -> 
 	Exec['foreman-installer']
 	
@@ -16,21 +18,23 @@ class theforeman::coreinstall::coreinstall {
 	
 	
 	# prepare the options for the foreman installer
+	# the Package dependency is required to create the needed folder.
 	file { "/etc/foreman/foreman-installer-answers.yaml":
-		ensure	=> present,
+		ensure	=> "present",
 		source => 'puppet:///modules/theforeman/installation/foreman-installer-answers.yaml',
 		owner	=> root,
 		group	=> root,
 		mode	=> 600,
+		require => Package['foreman-installer'],
 	}
+	
 
 	exec { 'foreman-installer':
-		command	=> "/usr/sbin/foreman-installer --enable-foreman-proxy --foreman-proxy-trusted-hosts=localhost --foreman-admin-password changeme",
+		command	=> "/usr/sbin/foreman-installer --enable-foreman-proxy --foreman-proxy-trusted-hosts=localhost --foreman-proxy-trusted-hosts=server.local.cloud --foreman-admin-password changeme",
 		environment => ["HOME=/home/server"],
 		timeout => 1000,
 	}
 
-#
 
 #
 
