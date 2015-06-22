@@ -15,7 +15,7 @@ class theforeman::coreinstall::preparepuppet {
 	
 	file {'/etc/puppet/environments/cloudbox':
 		path	=> '/etc/puppet/environments/cloudbox',
-		ensure	=> present,
+		ensure	=> "directory",
 		owner	=> puppet,
 		group	=> root,
 		mode	=> 0755,
@@ -23,7 +23,7 @@ class theforeman::coreinstall::preparepuppet {
 	
 	file {'/etc/puppet/environments/cloudbox/modules':
 		path	=> '/etc/puppet/environments/cloudbox/modules',
-		ensure	=> present,
+		ensure	=> "directory",
 		owner	=> puppet,
 		group	=> root,
 		mode	=> 0755,
@@ -32,7 +32,7 @@ class theforeman::coreinstall::preparepuppet {
 	
 	file {'/etc/puppet/environments/cloudbox/manifests':
 		path	=> '/etc/puppet/environments/cloudbox/manifests',
-		ensure	=> present,
+		ensure	=> "directory",
 		owner	=> puppet,
 		group	=> root,
 		mode	=> 0755,
