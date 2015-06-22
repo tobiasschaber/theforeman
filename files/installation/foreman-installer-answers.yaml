@@ -1,5 +1,6 @@
 ---
 foreman:
+  environment: cloudbox
   custom_repo: true
 foreman_proxy:
   custom_repo: true

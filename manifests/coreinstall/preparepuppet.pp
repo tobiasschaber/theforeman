@@ -1,5 +1,9 @@
 
 
+# this class will prepare the (existing) puppet installation and will add
+# the cloudbox environment as a directory environment by just adding the needed
+# folders under /etc/puppet/environments
+
 class theforeman::coreinstall::preparepuppet {
 
 

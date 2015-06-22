@@ -18,6 +18,7 @@
 	File['/var/lib/tftpboot/boot/Ubuntu-12.10-x86_64-linux'] ->
 	Exec['wget initrd.img'] ->
 	Exec['wget vmlinuz'] ->
+
 	File['/usr/share/foreman-installer/modules/foreman_proxy/manifests/proxydhcp.pp'] ->
 	File['/var/lib/tftpboot/boot/foreman-discovery-image-latest.el6.iso-img'] ->
 	File['/var/lib/tftpboot/boot/foreman-discovery-image-latest.el6.iso-vmlinuz'] ->
@@ -254,55 +255,12 @@ exec { "hammer execution":
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Install local ubuntu repository: apt-cacher
 service { "apache2":
 	ensure  => "running",
 	enable  => "true",
 
 }
-
-
-
-
-#
-#
-# OBERHALB: SCHON VERARBEITET
-# UNTERHALB: NOCH VERARBEITEN
-#
-#
-#
-#
-#
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -331,15 +289,6 @@ service { "apache2":
 
 
 
-
-
-
-
-
-
-
-
-
 	file { '/usr/share/foreman/bundler.d/plugins.rb':
 		ensure	=> present,
 		owner	=> root,
@@ -360,51 +309,12 @@ exec { 'bundle-update':
 	   path => ['/usr/bin/', '/bin/', '/sbin/', '/usr/sbin'],
 }
 
-file_line { 'uncomment_environmentpath':
-	path	=> '/etc/puppet/puppet.conf',
-	line	=> '#    environmentpath  = /etc/puppet/environments',
-	match	=> '    environmentpath  = /etc/puppet/environments',
 
-}
-
-file_line { 'add-cloudbox-1':
-	path	=> '/etc/puppet/puppet.conf',
-	line	=> '',
-}
-
-file_line { 'add-cloudbox-2':
-	path	=> '/etc/puppet/puppet.conf',
-	line	=> '[cloudbox]',
-
-}
-
-file_line { 'add-cloudbox-3':
-	path	=> '/etc/puppet/puppet.conf',
-	line	=> '    modulepath = /etc/puppet/environments/cloudbox/modules',
-
-}
-
-exec { 'restart-puppet':
-	command	=> "service puppet restart",
-	path	=> "/usr/bin/",
-	
-}
 
 exec { 'second_foreman-restart':
 	command	=> "touch ~foreman/tmp/restart.txt",
 	path	=> "/usr/bin/",
 	
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
