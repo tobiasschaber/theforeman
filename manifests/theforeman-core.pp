@@ -46,10 +46,6 @@
 
 	File_Line['add-gem-foreman_discovery'] ->
 	Exec['bundle-update'] ->
-	File_Line['uncomment_environmentpath'] ->
-	File_Line['add-cloudbox-1'] ->
-	File_Line['add-cloudbox-2'] ->
-	File_Line['add-cloudbox-3'] ->
 	Exec['restart-puppet'] ->
 	Exec['second_foreman-restart']
 
@@ -57,7 +53,7 @@
 
 
 
-
+# BIND9 -> DNS Server
 
 
 # placing the keyfile

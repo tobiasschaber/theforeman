@@ -7,3 +7,5 @@ foreman_proxy:
   tftp: true
 puppet:
   server: true
+  server_environments:
+      - cloudbox
