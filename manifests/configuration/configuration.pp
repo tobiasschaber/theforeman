@@ -4,7 +4,7 @@
 class theforeman::configuration::configuration {
 
 	include theforeman::configuration::artifacts
-	include theforeman::installplugins::discovery
+	include theforeman::configuration::discovery
 	
 
 	## INSTALLATION SEQUENCE DEFINITION ##
