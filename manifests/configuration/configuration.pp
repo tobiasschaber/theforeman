@@ -4,6 +4,7 @@
 class theforeman::configuration::configuration {
 
 	include theforeman::configuration::artifacts
+	include theforeman::configuration::operatingsystems
 	include theforeman::configuration::discovery
 	
 
@@ -12,6 +13,7 @@ class theforeman::configuration::configuration {
 	File['/var/log/foreman/hammer.log'] ->
 	File['/etc/hammer/cli_config.yml'] ->
 	Class['theforeman::configuration::artifacts'] ->
+	Class['theforeman::configuration::operatingsystems'] ->
 	Class['theforeman::configuration::discovery']
 	
 	
