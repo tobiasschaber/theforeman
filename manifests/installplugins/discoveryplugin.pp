@@ -2,7 +2,7 @@
 
 
 # install the foreman discovery plugin via the foreman-installer
-class theforeman::installplugins::installplugins {
+class theforeman::installplugins::discoveryplugin {
 
 	## INSTALLATION SEQUENCE DEFINITION ##
 	
@@ -16,7 +16,7 @@ class theforeman::installplugins::installplugins {
 		command	=> "foreman-installer --enable-foreman-plugin-discovery --foreman-plugin-discovery-install-images=true",
 		environment => ["HOME=/home/server"],
 		path		=> "/usr/sbin/",
-		timeout => 1000,
+		timeout 	=> 1000,
 	}
 
 	
