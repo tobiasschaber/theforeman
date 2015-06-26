@@ -6,7 +6,9 @@ class theforeman::configuration::artifacts {
 	
 	Exec['hammer-create-installation-media'] ->
 	Exec['hammer-create-architecture'] ->
-	Exec['hammer-create-domain']
+	Exec['hammer-create-domain'] ->
+	Exec['test-env-variable'] ->
+	Exec['test-output']
 	
 	
 	## PROCEDURE DEFINITION ##
@@ -37,8 +39,18 @@ class theforeman::configuration::artifacts {
 		environment	=> ["HOME=/home/server"],
 		timeout	=> 1000,
 	}
-
-
+	
+	exec { 'test-env-variable':
+		environment => [ "ptable_id=$(hammer partition-table list | /bin/grep \"Preseed default\" | /usr/bin/cut -d' ' -f1)" ]
+		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
+	}
+	
+	exec { 'test-output':
+		command => "echo $ptable_id",
+		requires => Exec['test-env-variable'],
+		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
+	}
+	
 	
 	
 }
