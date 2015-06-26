@@ -121,15 +121,7 @@ file { '/var/lib/tftpboot/boot/Ubuntu-12.10-x86_64-linux':
 	
 }
 
-# download discovery images
-exec { "wget initrd.img":
-       command => "wget http://downloads.theforeman.org/discovery/releases/0.5/foreman-discovery-image-latest.el6.iso-img",
-       cwd     => "/var/lib/tftpboot/boot/",
-       creates => "/var/lib/tftpboot/boot/foreman-discovery-image-latest.el6.iso-img",
-       path    => "/usr/bin",
-       timeout => 1000,
-       
-}
+
 
 
 exec { "wget vmlinuz":
@@ -205,21 +197,6 @@ exec { "foreman-cache":
 }
 
 
-
-# install hammer cli
-package { 'hammer_cli':
-	ensure		=> installed,
-	provider	=> "gem",
-	
-}
-
-# install foreman plugin for hammer
-package { 'hammer_cli_foreman':
-	ensure	=> installed,
-	provider => "gem",
-	
-}
-
 # set up hammer for foreman
 file { '/etc/hammer':
         ensure  => directory,
@@ -227,6 +204,7 @@ file { '/etc/hammer':
         group   => nogroup,
         mode    => 777,
 }
+
 # hammer config file
 file { "/etc/hammer/cli_config.yml":
 	ensure	=> present,
