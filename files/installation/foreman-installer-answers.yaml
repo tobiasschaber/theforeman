@@ -1,11 +1,9 @@
 ---
+"foreman::plugin::discovery": false 
 foreman:
-  environment: cloudbox
   custom_repo: true
 foreman_proxy:
   custom_repo: true
   tftp: true
 puppet:
   server: true
-  server_environments:
-      - cloudbox
