@@ -15,14 +15,17 @@ class theforeman::installplugins::hammer {
 	
 	package { "ruby-hammer-cli":
 		ensure => "installed",
+		require => Class['theforeman::preparation::preparepackages'],
 	}
 	
 	package { "ruby-hammer-cli-foreman":
 		ensure => "installed",
+		require => Package['ruby-hammer-cli'],
 	}
 	
 	package { "ruby-hammer-cli-foreman-discovery":
 		ensure => "installed",
+		require => Package['ruby-hammer-cli-foreman'],
 	}
 	
 	
