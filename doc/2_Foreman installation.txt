@@ -7,8 +7,7 @@ Achtung! Diese Installationsanleitung setzt die vorherige Durchführung von "1_Ub
 	# TODO: script so umschreiben, dass ein git pull anstatt checkout gemacht wird, wenn das VZ existiert
 	-> Idempotenz sicherstellen
 
-	1.  cd $HOME/theforeman
-	2.  chmod +x run-puppet.sh
+	1.  cd $HOME/theforeman;chmod +x run-puppet.sh
 	3.  ./run-puppet.sh
 
 

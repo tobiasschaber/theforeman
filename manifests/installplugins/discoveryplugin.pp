@@ -23,6 +23,7 @@ class theforeman::installplugins::discoveryplugin {
 		environment => ["HOME=/home/server"],
 		path		=> "/usr/sbin/",
 		timeout 	=> 1000,
+		require => Class['theforeman::preparation::preparepackages'],
 	}
 
 	
