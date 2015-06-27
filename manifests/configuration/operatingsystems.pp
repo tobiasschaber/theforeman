@@ -16,7 +16,8 @@ class theforeman::configuration::operatingsystems {
 	exec { 'hammer-create-ubuntu-trusty':
 		environment => ["HOME=/home/server"],
 		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
-		command => "",
+		command => "echo created OS ubuntu trusty",
+		onlyif => "hammer os create --name Ubuntu --major 14 --minor 04 --family Debian --release-name trusty",
 	}
 
 	# update the domain: enter the dns entry id. us OS-id 1 because there is only one OS at the beginning
