@@ -51,22 +51,16 @@ class theforeman::configuration::artifacts {
 	
 	# update the domain: enter the dns entry id
 	exec { 'hammer-update-domain-dns':
-		environment => [
-			"proxy_id=$(hammer proxy list | grep \"server.local.cloud\" | cut -d' ' -f1)",			
-		],
-		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
-		command => "hammer domain update --name local.cloud --dns-id $proxy_id",
+		path    => ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
+		command => "hammer domain update --name local.cloud --dns-id $(hammer proxy list | grep 'server.local.cloud' | cut -d' ' -f1)",
+		environment     => ["HOME=/home/server"],
 	}
 
 	exec { 'hammer-create-subnet':
 		command => "echo subnet created",
-		onlyif 	=> "hammer subnet create --name main --network 172.16.0.0 --mask 255.255.255.0 --gateway 172.16.0.2 --domain-ids $domain_id --dhcp-id $proxy_id --tftp-id $proxy_id --dns-id $proxy_id",
+		onlyif 	=> "hammer subnet create --name main --network 172.16.0.0 --mask 255.255.255.0 --gateway 172.16.0.2 --domain-ids $(hammer domain list | /bin/grep \"local.cloud\" | /usr/bin/cut -d' ' -f1) --dhcp-id $(hammer proxy list | grep \"server.local.cloud\" | cut -d' ' -f1) --tftp-id $(hammer proxy list | grep \"server.local.cloud\" | cut -d' ' -f1) --dns-id $(hammer proxy list | grep \"server.local.cloud\" | cut -d' ' -f1)",
 		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
-		environment => [
-			"HOME=/home/server",
-			"domain_id=$(hammer domain list | /bin/grep \"local.cloud\" | /usr/bin/cut -d' ' -f1)",
-			"proxy_id=$(hammer proxy list | grep \"server.local.cloud\" | cut -d' ' -f1)",			
-		],
+		environment => ["HOME=/home/server"],
 		timeout	=> 1000,
 	}
 	
