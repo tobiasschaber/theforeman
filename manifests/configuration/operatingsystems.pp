@@ -17,7 +17,7 @@ class theforeman::configuration::operatingsystems {
 		environment => ["HOME=/home/server"],
 		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
 		command => "echo created OS ubuntu trusty",
-		onlyif => "hammer os create --name Ubuntu --major 14 --minor 04 --family Debian --release-name trusty --architecture-ids $(hammer architecture list | /bin/grep \"x86_64\" | /usr/bin/cut -d' ' -f1) --medium-ids ${hammer medium list | /bin/grep \"Local Mirror\" | /usr/bin/cut -d' ' -f1) --partition-table-ids $(hammer partition-table list | /bin/grep \"Preseed default\" | /usr/bin/cut -d' ' -f1)",
+		onlyif => "hammer os create --name Ubuntu --major 14 --minor 04 --family Debian --release-name trusty --architecture-ids $(hammer architecture list | /bin/grep \"x86_64\" | /usr/bin/cut -d' ' -f1) --medium-ids ${hammer medium list | /bin/grep \"Local Mirror\" | /usr/bin/cut -d' ' -f1) --partition-table-ids $(hammer partition-table list | /bin/grep \"Preseed default\" | /usr/bin/cut -d' ' -f1) --config-template-ids $(hammer template list --search "Preseed default" | /bin/grep "Preseed default" | /usr/bin/cut -c 1-22 | /bin/grep "[[:space:]]$" | /usr/bin/cut -d' ' -f1),$(hammer template list --search \"Preseed default finish\" | /bin/grep \"Preseed default finish\" | /usr/bin/cut -d' ' -f1) ",
 	}
 
 	# update the domain: enter the dns entry id. us OS-id 1 because there is only one OS at the beginning
