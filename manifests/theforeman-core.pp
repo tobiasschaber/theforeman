@@ -102,35 +102,6 @@ file { '/var/lib/tftpboot/boot':
 	
 }
 
-# copy image for Ubuntu 12.10
-file { '/var/lib/tftpboot/boot/Ubuntu-12.10-x86_64-initrd.gz':
-	ensure	=> present,
-	owner	=> nobody,
-	group	=> nogroup,
-	mode	=> 777,
-	source	=> "/home/server/git/foreman-poc/files/TFTP/ubuntu12.10/initrd.gz",
-	
-}
-
-file { '/var/lib/tftpboot/boot/Ubuntu-12.10-x86_64-linux':
-	ensure	=> present,
-	owner	=> nobody,
-	group	=> nogroup,
-	mode	=> 777,
-	source	=> "/home/server/git/foreman-poc/files/TFTP/ubuntu12.10/linux",
-	
-}
-
-
-
-
-exec { "wget vmlinuz":
-        command => "wget http://downloads.theforeman.org/discovery/releases/0.5/foreman-discovery-image-latest.el6.iso-vmlinuz",
-        cwd     => "/var/lib/tftpboot/boot/",
-        creates => "/var/lib/tftpboot/boot/foreman-discovery-image-latest.el6.iso-vmlinuz",
-        path    => "/usr/bin",
-        timeout => 1000,
-}
 
 
 
@@ -143,35 +114,6 @@ file { "/usr/share/foreman-installer/modules/foreman_proxy/manifests/proxydhcp.p
 	mode	=> 644,
 	
 }
-
-
-
-
-
-
-
-# set permissions for discovery images
-file { '/var/lib/tftpboot/boot/foreman-discovery-image-latest.el6.iso-img':
-      ensure  => present,
-      owner   => foreman-proxy,
-      group   => nogroup,
-      mode    => 644,
-     
-}
-
-
-file { '/var/lib/tftpboot/boot/foreman-discovery-image-latest.el6.iso-vmlinuz':
-      ensure  => present,
-      owner   => foreman-proxy,
-      group   => nogroup,
-      mode    => 644,
-      
-}
-
-
-
-
-
 
 
 
@@ -204,39 +146,6 @@ file { '/etc/hammer':
         group   => nogroup,
         mode    => 777,
 }
-
-# hammer config file
-file { "/etc/hammer/cli_config.yml":
-	ensure	=> present,
-	source	=> "/home/server/git/foreman-poc/hammer/cli_config.yml",
-
-}
-
-# hammer logging
-file { '/var/log/foreman/hammer.log':
-	ensure	=> present,
-	mode	=> 777,
-
-}
-
-exec { "hammer execution":
-	command	=> "/home/server/git/foreman-poc/hammer/hammer.sh",
-	path	=> "/usr/local/bin/",
-
-#	user	=> "server",
-	environment	=> ["HOME=/home/server"],
-}
-
-
-
-# Install local ubuntu repository: apt-cacher
-service { "apache2":
-	ensure  => "running",
-	enable  => "true",
-
-}
-
-
 
 
 
