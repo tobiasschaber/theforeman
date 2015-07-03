@@ -1,69 +1,6 @@
 
-->
-
-## TODO SECTION
-	-> prepare the apt list for plugin site
-	File['prepare_list_plugin'] ->
 
 
-#############
-	Exec['teardown-apparmor'] ->
-	File['/etc/bind/rndc.key'] ->
-
-	File_Line['dhclient'] ->
-	File['/var/lib/tftpboot'] ->
-	File['/var/lib/tftpboot/pxelinux.cfg'] ->
-	File['/var/lib/tftpboot/boot'] ->
-	File['/var/lib/tftpboot/boot/Ubuntu-12.10-x86_64-initrd.gz'] ->
-	File['/var/lib/tftpboot/boot/Ubuntu-12.10-x86_64-linux'] ->
-	Exec['wget initrd.img'] ->
-	Exec['wget vmlinuz'] ->
-
-	File['/usr/share/foreman-installer/modules/foreman_proxy/manifests/proxydhcp.pp'] ->
-	File['/var/lib/tftpboot/boot/foreman-discovery-image-latest.el6.iso-img'] ->
-	File['/var/lib/tftpboot/boot/foreman-discovery-image-latest.el6.iso-vmlinuz'] ->
-	Exec['foreman-installer'] ->
-		
-	File['/etc/foreman/settings.yaml'] ->
-	Exec['foreman-restart'] ->
-	Exec['foreman-cache'] ->
-	Package['ruby-dev'] ->
-	Package['hammer_cli'] ->
-	Package['hammer_cli_foreman'] ->
-	File['/etc/hammer'] ->
-	File['/etc/hammer/cli_config.yml'] ->
-	File['/var/log/foreman/hammer.log'] ->
-	Exec['hammer execution'] ->
-	
-	
-
-	Service['apache2'] ->
-	Service['apt-cacher'] ->
-	File['/etc/apt-cacher/apt-cacher.conf'] ->
-	Exec['apt-cacher-import'] ->
-
-		File['/usr/share/foreman/bundler.d/plugins.rb']
-
-	File_Line['add-gem-foreman_discovery'] ->
-	Exec['bundle-update'] ->
-	Exec['restart-puppet'] ->
-	Exec['second_foreman-restart']
-
-
-
-
-
-# BIND9 -> DNS Server
-
-
-# placing the keyfile
-file { "/etc/bind/rndc.key":
-	ensure	=> present,
-	source	=> "/home/server/git/foreman-poc/files/BIND/rndc.key",
-	owner	=> root,
-	group	=> bind,
-	mode	=> 640,
-}
 
 
 
