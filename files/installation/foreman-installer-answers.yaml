@@ -21,7 +21,7 @@ foreman_proxy:
   dns_reverse: 0.16.172.in-addr.arpa
   dns_server: 172.16.0.2
   dns_forwarders: 8.8.8.8
-  foreman_base_url: http://server.local.cloud
+  foreman_base_url: https://server.local.cloud
 puppet:
   server: true
   server_environments:

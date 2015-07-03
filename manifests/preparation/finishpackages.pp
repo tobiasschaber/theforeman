@@ -29,7 +29,7 @@ class theforeman::preparation::finishpackages {
 	# placing the keyfile
 	file { "/etc/bind/rndc.key":
 		ensure	=> present,
-		source	=> "/home/server/git/foreman-poc/files/System/rndc.key",
+		source	=> "puppet:///modules/theforeman/System/rndc.key",
 		owner	=> root,
 		group	=> bind,
 		mode	=> 640,
