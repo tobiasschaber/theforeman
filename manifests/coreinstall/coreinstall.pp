@@ -35,34 +35,4 @@ class theforeman::coreinstall::coreinstall {
 		timeout => 1000,
 	}
 
-
-#
-
-### TODO:
-
-# http://projects.theforeman.org/projects/smart-proxy/wiki/Settingsyml
-
-# ACHTUNG! Die Foremaninstallation soll zunächst ohne folgende Dinge passieren
-# - puppet environment "cloudbox" (siehe auch answers.yaml)
-# - alle plugins
-# - hammer
-# - smartproxies
-# - betriebssysteme
-
-
-# dann sollte ich zunächst schauen, was die ganzen parameter in der bisherigen answers.yaml datei bedeuten und warum wir diese gesetzt haben.
-
-# eine puppet umgebung kann über die foreman gui erstellt werden, 
-# ich bin aber noch nciht sicher, ob diese einrichtung wirklich automatisiert werden sollte
-
-
-#
-
-#
-
-
-#	include theforeman::preparation::startservices
-	
-#	Class['theforeman::preparation::startservices']
-
 }

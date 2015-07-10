@@ -3,6 +3,8 @@
 foreman:
   environment: cloudbox
   custom_repo: true
+  oauth_consumer_key: Ls6P7vd3sfv8QZviRTNnPUX2k5RPhTnn
+  oauth_consumer_secret: Uq2Hwyp7kHuSB7YGU3beMXcTKuyA9VaD
 foreman_proxy:
   custom_repo: true
   puppetrun: true
@@ -22,6 +24,8 @@ foreman_proxy:
   dns_server: 172.16.0.2
   dns_forwarders: 8.8.8.8
   foreman_base_url: https://server.local.cloud
+  oauth_consumer_key: Ls6P7vd3sfv8QZviRTNnPUX2k5RPhTnn
+  oauth_consumer_secret: Uq2Hwyp7kHuSB7YGU3beMXcTKuyA9VaD
 puppet:
   server: true
   server_environments:
