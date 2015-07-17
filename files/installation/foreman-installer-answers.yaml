@@ -19,11 +19,11 @@ foreman_proxy:
   dhcp_key_secret: bQR3x3fquV+YjZ+aChpfJQ==
   dns: true
   dns_interface: eth0
-  dns_zone: local.cloud
+  dns_zone: local.cccloud
   dns_reverse: 0.16.172.in-addr.arpa
   dns_server: 172.16.0.2
   dns_forwarders: 8.8.8.8
-  foreman_base_url: https://server.local.cloud
+  foreman_base_url: https://server.local.cccloud
   oauth_consumer_key: Ls6P7vd3sfv8QZviRTNnPUX2k5RPhTnn
   oauth_consumer_secret: Uq2Hwyp7kHuSB7YGU3beMXcTKuyA9VaD
 puppet:

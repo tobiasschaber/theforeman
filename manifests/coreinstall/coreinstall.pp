@@ -30,7 +30,7 @@ class theforeman::coreinstall::coreinstall {
 	
 
 	exec { 'foreman-installer':
-		command	=> "/usr/sbin/foreman-installer --enable-foreman-proxy --foreman-proxy-trusted-hosts=localhost --foreman-proxy-trusted-hosts=server.local.cloud --foreman-admin-password changeme --enable-foreman-plugin-discovery",
+		command	=> "/usr/sbin/foreman-installer --enable-foreman-proxy --foreman-proxy-trusted-hosts=localhost --foreman-proxy-trusted-hosts=server.local.cccloud --foreman-admin-password changeme --enable-foreman-plugin-discovery",
 		environment => ["HOME=/home/server"],
 		timeout => 1000,
 	}

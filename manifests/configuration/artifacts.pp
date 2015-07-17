@@ -34,8 +34,8 @@ class theforeman::configuration::artifacts {
 	}
 	
 	exec { 'hammer-create-domain':
-		command => "echo domain local.cloud created",
-		onlyif 	=> "hammer domain create --name \"local.cloud\" --description \"Base cloud domain\"",
+		command => "echo domain local.cccloud created",
+		onlyif 	=> "hammer domain create --name \"local.cccloud\" --description \"Base cloud domain\"",
 		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
 		environment	=> ["HOME=/home/server"],
 		timeout	=> 1000,
@@ -52,13 +52,13 @@ class theforeman::configuration::artifacts {
 	# update the domain: enter the dns entry id
 	exec { 'hammer-update-domain-dns':
 		path    => ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
-		command => "hammer domain update --name local.cloud --dns-id $(hammer proxy list | grep 'server.local.cloud' | cut -d' ' -f1)",
+		command => "hammer domain update --name local.cccloud --dns-id $(hammer proxy list | grep 'server.local.cccloud' | cut -d' ' -f1)",
 		environment     => ["HOME=/home/server"],
 	}
 
 	exec { 'hammer-create-subnet':
 		command => "echo subnet created",
-		onlyif 	=> "hammer subnet create --name main --network 172.16.0.0 --mask 255.255.255.0 --gateway 172.16.0.2 --domain-ids $(hammer domain list | /bin/grep \"local.cloud\" | /usr/bin/cut -d' ' -f1) --dhcp-id $(hammer proxy list | grep \"server.local.cloud\" | cut -d' ' -f1) --tftp-id $(hammer proxy list | grep \"server.local.cloud\" | cut -d' ' -f1) --dns-id $(hammer proxy list | grep \"server.local.cloud\" | cut -d' ' -f1)",
+		onlyif 	=> "hammer subnet create --name main --network 172.16.0.0 --mask 255.255.255.0 --gateway 172.16.0.2 --domain-ids $(hammer domain list | /bin/grep \"local.cccloud\" | /usr/bin/cut -d' ' -f1) --dhcp-id $(hammer proxy list | grep \"server.local.cccloud\" | cut -d' ' -f1) --tftp-id $(hammer proxy list | grep \"server.local.cccloud\" | cut -d' ' -f1) --dns-id $(hammer proxy list | grep \"server.local.cccloud\" | cut -d' ' -f1)",
 		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
 		environment => ["HOME=/home/server"],
 		timeout	=> 1000,

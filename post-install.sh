@@ -13,6 +13,7 @@ git clone https://bitbucket.org/tobias_schaber/theforeman.git
 # ATTENTION ! REACTIVATE FOR BAREMETAL USAGE!!!
 #sudo cp $HOME/git/foreman-poc/files/System/interfaces /etc/network/
 
+git checkout renamedomain
 
 wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
 sudo dpkg -i puppetlabs-release-trusty.deb
