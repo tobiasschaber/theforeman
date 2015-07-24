@@ -4,12 +4,6 @@
 
 
 
-# dhclient fix: prepend DNS-server
-file_line { 'dhclient':
-	path	=> '/etc/dhcp/dhclient.conf',
-	line	=> 'prepend domain-name-servers 172.16.0.2;',
-	match	=> "prepend domain-name-servers",
-}
 
 # TFTP
 
