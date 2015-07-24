@@ -46,5 +46,6 @@ Please follow this instructions to get the operating system running as needed:
 	
 	# ACHTUNG! NEUSTES FILE AUS BITBUCKET ZIEHEN!
 	1.  wget https://bitbucket.org/tobias_schaber/theforeman/raw/7c46f5150b182d65d095f49c3e563ad318172101/post-install.sh
+		wget https://bitbucket.org/tobias_schaber/theforeman/raw/d49e3c2a6dc1e156290e914b09e8d8b7a087e1f5/post-install.sh /RENAMED)(
 	3.  chmod +x post-install.sh
 	4.  ./post-install.sh

@@ -10,14 +10,6 @@ cd $HOME
 # clone the foreman installer puppet module from git
 git clone https://bitbucket.org/tobias_schaber/theforeman.git
 
-# ATTENTION ! REACTIVATE FOR BAREMETAL USAGE!!!
-#sudo cp $HOME/git/foreman-poc/files/System/interfaces /etc/network/
-
-cd theforeman
-
-git checkout renamedomain
-
-cd ..
 
 wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
 sudo dpkg -i puppetlabs-release-trusty.deb
@@ -43,5 +35,7 @@ rm puppetlabs-release-trusty.deb
 
 # cleanup the puppet.conf file to remove the deprecated "templatedir" line
 sudo sed -i -e /templatedir/d /etc/puppet/puppet.conf
+
+sudo ntpdate -u ntp.ubuntu.com
 
 # CONTINUE WITH run-puppet.sh
