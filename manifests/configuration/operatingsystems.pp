@@ -9,7 +9,8 @@ class theforeman::configuration::operatingsystems {
 	Exec['hammer-set-template-preseed-finish'] ->
 	Exec['hammer-set-template-preseed-pxelinux'] ->
 	Exec['hammer-os-set-default-template-provision'] ->
-	Exec['hammer-os-set-default-template-finish']
+	Exec['hammer-os-set-default-template-finish'] ->
+	Exec['hammer-os-set-default-template-pxelinux']
 	
 	
 	## PROCEDURE DEFINITION ##
@@ -53,17 +54,22 @@ class theforeman::configuration::operatingsystems {
 	exec { 'hammer-os-set-default-template-provision':
 		environment => ["HOME=/home/server"],
 		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
-		command => "echo created OS ubuntu trusty",
+		command => "echo added provision template to OS",
 		onlyif => "hammer os set-default-template --id 1 --config-template-id $(hammer template list --search \"Preseed default\" | grep \"Preseed default\" | cut -c 1-30 | grep \"[[:space:]]$\" | cut -d' ' -f1)",
 	}
-	
-
 
 	exec { 'hammer-os-set-default-template-finish':
 		environment => ["HOME=/home/server"],
 		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
-		command => "echo created OS ubuntu trusty",
+		command => "echo added finish template to OS",
 		onlyif => "hammer os set-default-template --id 1 --config-template-id $(hammer template list --search \"Preseed default finish\" | grep \"Preseed default finish\" | cut -d' ' -f1)",
+	}
+	
+	exec { 'hammer-os-set-default-template-pxelinux':
+		environment => ["HOME=/home/server"],
+		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
+		command => "echo added pxelinux template to OS",
+		onlyif => "hammer os set-default-template --id 1 --config-template-id $(hammer template list --search \"Preseed default PXELinux\" | grep \"Preseed default PXELinux\" | cut -d' ' -f1)",
 	}
 
 
