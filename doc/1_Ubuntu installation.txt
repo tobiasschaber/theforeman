@@ -17,7 +17,7 @@ Please follow this instructions to get the operating system running as needed:
 	6.  Tasten drücken, ö bestätigen und drücken, é verneinen, bestätigen
 	
 	7.  Primäre Netzwerk-Schnittstelle: eth1
-	8.  Rechnername: server.local.cloud
+	8.  Rechnername: server.local.cccloud
 	
 	9.  Land des Spiegelservers: Deutschland (de.archive.ubuntu.com)
 	10. Proxy leer lassen
@@ -45,7 +45,7 @@ Please follow this instructions to get the operating system running as needed:
 	0. Start as User "server", not su
 	
 	# ACHTUNG! NEUSTES FILE AUS BITBUCKET ZIEHEN!
-	1.  wget https://bitbucket.org/tobias_schaber/theforeman/raw/7c46f5150b182d65d095f49c3e563ad318172101/post-install.sh
-		wget https://bitbucket.org/tobias_schaber/theforeman/raw/d49e3c2a6dc1e156290e914b09e8d8b7a087e1f5/post-install.sh /RENAMED)(
-	3.  chmod +x post-install.sh
-	4.  ./post-install.sh
+	1.  wget https://bitbucket.org/tobias_schaber/theforeman/raw/655eb9ccb4ee336d2928ce77b97dba6ba68e02a4/post-install-vm.sh (FÜR VMS)
+		wget https://bitbucket.org/tobias_schaber/theforeman/raw/655eb9ccb4ee336d2928ce77b97dba6ba68e02a4/post-install-baremetal.sh (FÜR BAREMETAL)
+	3.  chmod +x post-install*
+	4.  ./post-install-*

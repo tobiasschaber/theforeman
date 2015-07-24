@@ -39,4 +39,7 @@ sudo sed -i -e /templatedir/d /etc/puppet/puppet.conf
 
 sudo ntpdate -u ntp.ubuntu.com
 
+# reboot to take place changes
+sudo shutdown -r now
+
 # CONTINUE WITH run-puppet.sh
