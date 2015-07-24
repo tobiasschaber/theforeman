@@ -46,6 +46,6 @@ Please follow this instructions to get the operating system running as needed:
 	
 	# ACHTUNG! NEUSTES FILE AUS BITBUCKET ZIEHEN!
 	1.  wget https://bitbucket.org/tobias_schaber/theforeman/raw/655eb9ccb4ee336d2928ce77b97dba6ba68e02a4/post-install-vm.sh (FÜR VMS)
-		wget https://bitbucket.org/tobias_schaber/theforeman/raw/655eb9ccb4ee336d2928ce77b97dba6ba68e02a4/post-install-baremetal.sh (FÜR BAREMETAL)
+		wget https://bitbucket.org/tobias_schaber/theforeman/raw/e523d5375c87299b115965f1cff670bdb73eaad9/post-install-baremetal.sh (FÜR BAREMETAL)
 	3.  chmod +x post-install*
 	4.  ./post-install-*

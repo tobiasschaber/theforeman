@@ -3,7 +3,8 @@
 class theforeman::finalize::finalize {
 
 	Exec['restart-service-bind'] ->
-	Exec['restart-service-dhcp']
+	Exec['restart-service-dhcp'] ->
+	Exec['restart-foreman-final']
 	
 	
 	exec {'restart-service-bind':
@@ -16,4 +17,10 @@ class theforeman::finalize::finalize {
 		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
 	}	
 	
+	exec {'restart-foreman-final':
+		command => "touch ~foreman/tmp/restart.txt",
+		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
+	}		
+	
 }
+
