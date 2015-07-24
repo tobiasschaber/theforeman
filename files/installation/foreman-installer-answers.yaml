@@ -9,6 +9,7 @@ foreman_proxy:
   custom_repo: true
   puppetrun: true
   tftp: true
+  tftp_servername: 172.16.0.2
   dhcp: true
   dhcp_managed: true
   dhcp_interface: eth0

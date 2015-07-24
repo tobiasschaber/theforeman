@@ -9,7 +9,8 @@ class theforeman::preparation::finishpackages {
 	File['/etc/apt-cacher/apt-cacher.conf'] ->
 	Exec['apt-cacher-import'] ->
 	File['/etc/bind/rndc.key'] ->
-	User['dhcpd']
+	User['dhcpd'] ->
+	File_Line['dhclient']
 	
 	## PROCEDURE DEFINITION ##
 	
@@ -39,6 +40,14 @@ class theforeman::preparation::finishpackages {
 	user { "dhcpd":
 		ensure	=> present,
 		groups	=> ['bind'],
+	}
+	
+
+	# dhclient fix: prepend DNS-server
+	file_line { 'dhclient':
+		path	=> '/etc/dhcp/dhclient.conf',
+		line	=> 'prepend domain-name-servers 172.16.0.2;',
+		match	=> "prepend domain-name-servers",
 	}
 	
 }
