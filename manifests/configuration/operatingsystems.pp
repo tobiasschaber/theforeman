@@ -27,7 +27,7 @@ class theforeman::configuration::operatingsystems {
 	exec { 'hammer-set-template-preseed-default':
 		environment => ["HOME=/home/server"],
 		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
-		command => "hammer template update --id $(hammer template list --search \"Preseed default\" | grep \"Preseed default\" | cut -c 1-30 | grep \"[[:space:]]$\" | cut -d' ' -f1) --operatingsystem-ids 1",
+		command => "hammer template update --id $(hammer template list --search \"Preseed default\" | grep \"Preseed default  \" | cut -c 1-2) --operatingsystem-ids 1",
 	}
 	
 	# update the domain: enter the dns entry id. us OS-id 1 because there is only one OS at the beginning
