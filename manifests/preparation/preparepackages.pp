@@ -45,12 +45,12 @@ class theforeman::preparation::preparepackages {
 		path	=> '/etc/apt/sources.list.d/foreman.list',
 		ensure	=> present,
 		mode	=> 0644,
-		content	=> 'deb http://deb.theforeman.org/ trusty 1.8'
+		content	=> 'deb http://deb.theforeman.org/ trusty 1.9'
 	}
 	
 	file_line { 'prepare-apt-foreman-plugins':
 		path	=> '/etc/apt/sources.list.d/foreman.list',
-		line	=> 'deb http://deb.theforeman.org/ plugins 1.8',
+		line	=> 'deb http://deb.theforeman.org/ plugins 1.9',
 	}
 	
 	exec { "apt-update":
