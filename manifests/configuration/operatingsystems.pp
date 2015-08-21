@@ -55,7 +55,7 @@ class theforeman::configuration::operatingsystems {
 		environment => ["HOME=/home/server"],
 		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
 		command => "echo added provision template to OS",
-		onlyif => "hammer os set-default-template --id 1 --config-template-id $(hammer template list --search \"Preseed default\" | grep \"Preseed default\" | cut -c 1-30 | grep \"[[:space:]]$\" | cut -d' ' -f1)",
+		onlyif => "hammer os set-default-template --id 1 --config-template-id $(hammer template list --search \"Preseed default\" | grep \"Preseed default  \" | cut -c 1,2 )",
 	}
 
 	exec { 'hammer-os-set-default-template-finish':
