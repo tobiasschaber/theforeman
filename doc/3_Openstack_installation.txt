@@ -1,0 +1,11 @@
+
+Achtung! Diese Installationsanleitung setzt die vorherige Durchführung von "2_Foreman_installation" voraus!
+
+Das Openstack Modul checkt das Openstack Puppet Modul aus bitbucket aus und importiert es in foreman. Dies 
+erfolgt bereits als Teil der Installation von 2_Foreman_installation".
+
+Dieses Modul kann jedoch auch separat und wiederholt geupdated werden. Hierzu wie folgt vorgehen:
+
+	cd ~/theforeman
+	chmod +x update-openstack-module.sh
+	./update-openstack-module.sh
