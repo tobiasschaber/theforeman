@@ -4,4 +4,4 @@
 
 cd /home/server/theforeman
 
-sudo puppet apply --debug manifests/openstack/openstack.pp
+sudo puppet apply --debug manifests/update-openstack.pp
