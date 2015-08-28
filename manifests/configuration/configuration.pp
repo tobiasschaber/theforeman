@@ -14,7 +14,8 @@ class theforeman::configuration::configuration {
 	File['/etc/hammer/cli_config.yml'] ->
 	Class['theforeman::configuration::artifacts'] ->
 	Class['theforeman::configuration::operatingsystems'] ->
-	Class['theforeman::configuration::discovery']
+	Class['theforeman::configuration::discovery'] ->
+	Exec['build-pxe-default-template']
 	
 	
 
@@ -34,6 +35,15 @@ class theforeman::configuration::configuration {
 		ensure	=> present,
 		source 	=> 'puppet:///modules/theforeman/configuration/hammer_cli_config.yml',
 	}
+	
+	exec { 'build-pxe-default-template':
+		environment => ["HOME=/home/server"],
+		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
+		command => "echo  pxe default template was build",
+		onlyif  => "hammer template build-pxe-default",
+	}
+	
+	
 	
 
 
