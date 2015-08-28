@@ -13,7 +13,6 @@ class theforeman::openstack::openstack {
 		command => "git clone https://bitbucket.org/tobias_schaber/openstack.git",
 		cwd     => "/tmp",
 		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
-		require => Notify['finished-installation']
 	}
 
 	exec {'copy-openstack-module':
