@@ -19,7 +19,6 @@ class theforeman::openstack::openstack {
 		command => "cp -r /tmp/openstack/cc_openstack /etc/puppet/modules/",
 		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
 	}	
-
 	
 	exec { 'hammer-import-modules':
 		environment => ["HOME=/home/server"],
