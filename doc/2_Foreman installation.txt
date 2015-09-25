@@ -16,7 +16,6 @@ Achtung! Diese Installationsanleitung setzt die vorherige Durchführung von "1_Ub
 4. POST INSTALL in FOREMAN
 ---------------------------------------------------------------------------------------------
 	1.  Unter "Hosts -> Bereitstellungsvorlagen" den Button "PXE-Vorgabe erstellen" klicken
-	2.  Unter "Hosts -> Betriebssysteme" beim Ubuntu 12.10 unter "Vorlagen" die 3 Preseed Vorlagen hinzufügen
 	3.  Unter "Verwaltung -> Einstellungen" -> "Puppet" -> puppetrun von "false" auf "true" setzen
 
 5. POST INSTALL

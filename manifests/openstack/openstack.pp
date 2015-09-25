@@ -1,11 +1,12 @@
 
 # standalone puppet class!
-# checkout the openstack puppet module from bitbucket and copy it into the puppet
-# directory. then import the new module into foreman
+# checks out the openstack puppet module from bitbucket and copies it into the puppet
+# directory. then imports the new module into foreman
 class theforeman::openstack::openstack {
 
 	Exec['checkout-puppet-classes'] ->
 	Exec['copy-openstack-module'] ->
+	Exec['copy-dependend-modules'] ->
 	Exec['hammer-import-modules']
 	
 	
@@ -20,6 +21,11 @@ class theforeman::openstack::openstack {
 		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
 	}	
 	
+	exec {'copy-dependend-modules':
+		command => "cp -r /tmp/openstack/dependencies/mysql /etc/puppet/modules/",
+		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
+	}	
+		
 	exec { 'hammer-import-modules':
 		environment => ["HOME=/home/server"],
 		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
