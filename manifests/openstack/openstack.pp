@@ -38,7 +38,7 @@ class theforeman::openstack::openstack {
 		environment => ["HOME=/home/server"],
 		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
 		command => "echo created openstack controller hostgroup",
-		onlyif => "hammer hostgroup create --name openstack-controller --environment cloudbox --puppet-classes cc_openstack::roles::controller_node --domain local.cccloud --subnet-id 1 --puppet-ca-proxy server.local.cccloud --puppet-proxy server.local.cccloud --architecture x86_64 --operatingsystem \"Ubuntu 14.04.1 LTS\" --medium \"Local Mirror\" --partition-table \"Preseed default\"",
+		onlyif => "hammer hostgroup create --name openstack-controller --environment cloudbox --puppet-classes cc_openstack::roles::controller_node --domain local.cccloud --subnet-id 1 --puppet-ca-proxy server.local.cccloud --puppet-proxy server.local.cccloud --architecture x86_64 --operatingsystem-id 1 --medium \"Local Mirror\" --partition-table \"Preseed default\"",
 	}	
 	
 	

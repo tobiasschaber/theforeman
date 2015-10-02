@@ -2,31 +2,32 @@
 Achtung! Diese Installationsanleitung setzt die vorherige Durchführung von "1_Ubuntu installation" voraus!
 
 
-3. INSTALLATION VIA PUPPET
+1. INSTALLATION VIA PUPPET DURCHFÜHREN
 ---------------------------------------------------------------------------------------------
-	# TODO: script so umschreiben, dass ein git pull anstatt checkout gemacht wird, wenn das VZ existiert
-	-> Idempotenz sicherstellen
 
 	1.  cd $HOME/theforeman;chmod +x run-puppet.sh
 	3.  ./run-puppet.sh
+	4. reboot durchführen
+	
+	theforeman steht nun bereit unter:
+	
+		https://10.0.1.175/
+		Login: admin/changeme
 
 
 
 
-4. POST INSTALL in FOREMAN
+
+2. POST INSTALL in FOREMAN
 ---------------------------------------------------------------------------------------------
-	1.  Unter "Hosts -> Bereitstellungsvorlagen" den Button "PXE-Vorgabe erstellen" klicken
-	3.  Unter "Verwaltung -> Einstellungen" -> "Puppet" -> puppetrun von "false" auf "true" setzen
+In foreman sind einige Einstellungen manuell durchzuführen, da sie nicht automatisiert wurden:
 
-5. POST INSTALL
----------------------------------------------------------------------------------------------
-	1.  Ggf. muss unter /etc/default/puppetmaster der Wert für start von "no" auf "yes" gesetzt
-	    und der Service gestartet werden.
+	1. Unter "Verwaltung -> Einstellungen" -> "Puppet" -> puppetrun von "false" auf "true" setzen
+	2. Unter "Infrastruktur -> Subnetze -> main -> Proxys" den "Discovery Proxy" auf "server.local.cccloud" setzen
 
 	
-4.1 NOTIZEN
----------------------------------------------------------------------------------------------
-	1.  Die vorinstallierte Ubuntu 12.10 funktioniert bei mir nicht, der archiv mirror wird nicht gefunden
-		Abhilfe: Ein neues OS anlegen (Siehe separate Dokumentation) z.B. für 14.04
+Die Installation ist nun abgeschlossen, es kann mit openstack fortgefahren werden
+
+	-> Siehe "doc/1_Openstack_installation.txt" im openstack Projekt!
 
 	
