@@ -51,7 +51,7 @@ class theforeman::preparation::installpackages {
 	}
 	
 	package { "foreman-installer":
-		ensure => ['1.10.0~rc1-1', "installed"],
+		ensure => ['1.9.0-1', "installed"],
 	}
 	
 	package { "iptables-persistent":
