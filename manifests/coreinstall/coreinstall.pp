@@ -29,19 +29,7 @@ class theforeman::coreinstall::coreinstall {
 		group	=> root,
 		mode	=> 600,
 		require => Package['foreman-installer'],
-	}
-
-	# prepare the options for the foreman installer
-	# the Package dependency is required to create the needed folder.
-	file { "/etc/foreman/xxxxx.yaml":
-		ensure	=> "present",
-                content => "$primary_interface",
-		owner	=> root,
-		group	=> root,
-		mode	=> 600,
-		require => Package['foreman-installer'],
-	}
-	
+	}	
 
 	exec { 'foreman-installer':
 		command	=> "/usr/sbin/foreman-installer --enable-foreman-proxy --foreman-proxy-trusted-hosts=localhost --foreman-proxy-trusted-hosts=server.local.cccloud --foreman-admin-password changeme --enable-foreman-plugin-discovery",
