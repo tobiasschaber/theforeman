@@ -1,3 +1,4 @@
 ---
 foreman::primary_interface: eth2
+foreman::home_dir: /home/vagrant
 
