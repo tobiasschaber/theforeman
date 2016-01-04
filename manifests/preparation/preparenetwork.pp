@@ -4,6 +4,8 @@
 
 class theforeman::preparation::preparenetwork {
 
+        $primary_interface = hiera('foreman::primary_interface', 'eth1')
+
 	## INSTALLATION SEQUENCE DEFINITION ##
 	
 	Exec['iptables forward'] ->
@@ -23,7 +25,7 @@ class theforeman::preparation::preparenetwork {
 	}
 
 	exec { 'iptables masquerade':
-		command	=> "iptables --table nat -A POSTROUTING -o eth1 -j MASQUERADE",
+		command	=> "iptables --table nat -A POSTROUTING -o $primary_interface -j MASQUERADE",
 		path	=> "/sbin",
 	}
 		

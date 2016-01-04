@@ -4,6 +4,8 @@
 # directory. then imports the new module into foreman
 class theforeman::openstack::openstack {
 
+        $homedir = hiera('foreman::home_dir')
+
 	Exec['checkout-puppet-classes'] ->
 	Exec['copy-openstack-module'] ->
 	Exec['copy-dependend-modules'] ->
@@ -28,14 +30,14 @@ class theforeman::openstack::openstack {
 	}	
 		
 	exec { 'hammer-import-modules':
-		environment => ["HOME=/home/server"],
+		environment => ["HOME=$homedir"],
 		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
 		command => "echo imported openstack puppet module into foreman",
 		onlyif => "hammer proxy import-classes --environment cloudbox --id 1",
 	}
 
 	exec { 'hammer-create-controller-hostgroup':
-		environment => ["HOME=/home/server"],
+		environment => ["HOME=$homedir"],
 		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
 		command => "echo created openstack controller hostgroup",
 		onlyif => "hammer hostgroup create --name openstack-controller --environment cloudbox --puppet-classes cc_openstack::roles::controller_node --domain local.cccloud --subnet-id 1 --puppet-ca-proxy server.local.cccloud --puppet-proxy server.local.cccloud --architecture x86_64 --operatingsystem-id 1 --medium \"Local Mirror\" --partition-table \"Preseed default\"",
