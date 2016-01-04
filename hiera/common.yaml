@@ -1,0 +1,3 @@
+---
+foreman::primary_interface: eth2
+

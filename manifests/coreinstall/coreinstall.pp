@@ -9,7 +9,10 @@ class theforeman::coreinstall::coreinstall {
 
 	## INSTALLATION SEQUENCE DEFINITION ##
 	
+        $primary_interface = hiera('foreman::primary_interface')
+
 	Class['theforeman::coreinstall::preparepuppet'] ->
+        File['/etc/foreman/xxxxx.yaml'] ->
 	File['/etc/foreman/foreman-installer-answers.yaml'] -> 
 	Exec['foreman-installer']
 	
@@ -21,7 +24,18 @@ class theforeman::coreinstall::coreinstall {
 	# the Package dependency is required to create the needed folder.
 	file { "/etc/foreman/foreman-installer-answers.yaml":
 		ensure	=> "present",
-		source => 'puppet:///modules/theforeman/installation/foreman-installer-answers.yaml',
+                content => template("/tmp/foremaninstalldir/files/installation/foreman-installer-answers.erb"),
+		owner	=> root,
+		group	=> root,
+		mode	=> 600,
+		require => Package['foreman-installer'],
+	}
+
+	# prepare the options for the foreman installer
+	# the Package dependency is required to create the needed folder.
+	file { "/etc/foreman/xxxxx.yaml":
+		ensure	=> "present",
+                content => template("/tmp/foremaninstalldir/files/installation/foreman-installer-answers.erb"),
 		owner	=> root,
 		group	=> root,
 		mode	=> 600,

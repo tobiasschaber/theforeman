@@ -3,7 +3,8 @@
 # this script installs puppet, downloads the theforeman puppet module and installs it into
 # puppet.
 
-sudo apt-get install --yes openssh-server git
+sudo apt-get update
+sudo apt-get install --yes git
 
 cd $HOME
 
@@ -15,6 +16,7 @@ wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
 sudo dpkg -i puppetlabs-release-trusty.deb
 sudo apt-get update	
 sudo apt-get install --yes puppet
+
 
 # ATTENTION! This is deactivated because its the oldstyle art of adding cloudbox to puppet.
 # 			 we want the new style

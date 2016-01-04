@@ -3,10 +3,13 @@
 # install the foreman discovery plugin via the foreman-installer
 class theforeman::configuration::configuration {
 
+	$homedir = hiera('foreman::home_dir')
+
 	include theforeman::configuration::artifacts
 	include theforeman::configuration::operatingsystems
 	include theforeman::configuration::discovery
 	
+
 
 	## INSTALLATION SEQUENCE DEFINITION ##
 	
@@ -37,7 +40,7 @@ class theforeman::configuration::configuration {
 	}
 	
 	exec { 'build-pxe-default-template':
-		environment => ["HOME=/home/server"],
+		environment	=> ["HOME=$homedir"],
 		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
 		command => "echo  pxe default template was build",
 		onlyif  => "hammer template build-pxe-default",
