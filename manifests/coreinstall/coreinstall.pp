@@ -12,7 +12,6 @@ class theforeman::coreinstall::coreinstall {
         $primary_interface = hiera('foreman::primary_interface', 'eth1')
 
 	Class['theforeman::coreinstall::preparepuppet'] ->
-        File['/etc/foreman/xxxxx.yaml'] ->
 	File['/etc/foreman/foreman-installer-answers.yaml'] -> 
 	Exec['foreman-installer']
 	
