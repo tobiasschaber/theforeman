@@ -14,7 +14,7 @@ class theforeman::openstack::openstack {
 	
 	
 	exec {'checkout-puppet-classes':
-		command => "git clone https://bitbucket.org/tobias_schaber/openstack.git",
+		command => "if [ -d openstack ]; then (cd openstack && git pull); else git clone https://bitbucket.org/tobias_schaber/openstack.git; fi",
 		cwd     => "/tmp",
 		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
 	}
@@ -40,7 +40,7 @@ class theforeman::openstack::openstack {
 		environment => ["HOME=$homedir"],
 		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
 		command => "echo created openstack controller hostgroup",
-		onlyif => "hammer hostgroup create --name openstack-controller --environment cloudbox --puppet-classes cc_openstack::roles::controller_node --domain local.cccloud --subnet-id 1 --puppet-ca-proxy server.local.cccloud --puppet-proxy server.local.cccloud --architecture x86_64 --operatingsystem-id 1 --medium \"Local Mirror\" --partition-table \"Preseed default\"",
+		onlyif => "hammer hostgroup create --name openstack-controller --environment cloudbox --puppet-classes cc_openstack::roles::controller_node --domain local.cccloud --subnet-id 1 --puppet-ca-proxy server.local.cccloud --puppet-proxy server.local.cccloud --architecture x86_64 --operatingsystem-id 1 --medium \"Ubuntu mirror\" --partition-table \"Preseed default\"",
 	}	
 	
 	
