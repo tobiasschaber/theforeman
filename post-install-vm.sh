@@ -8,6 +8,12 @@ sudo apt-get install --yes git
 
 cd $HOME
 
+# cleanup old foreman directories if exists
+if [ -d theforeman ] 
+then
+        sudo rm -r theforeman
+fi
+
 # clone the foreman installer puppet module from git
 git clone https://github.com/tobiasschaber/theforeman.git
 
