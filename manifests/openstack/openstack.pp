@@ -7,6 +7,7 @@ class theforeman::openstack::openstack {
         $homedir = hiera('foreman::home_dir')
 
 	Exec['checkout-puppet-classes'] ->
+	Exec['update-puppet-classes'] ->
 	Exec['copy-openstack-module'] ->
 	Exec['copy-dependend-modules'] ->
 	Exec['hammer-import-modules'] ->
@@ -14,8 +15,15 @@ class theforeman::openstack::openstack {
 	
 	
 	exec {'checkout-puppet-classes':
-		command => "if [ -d openstack ]; then (cd openstack && git pull); else git clone https://bitbucket.org/tobias_schaber/openstack.git; fi",
+		command => "git clone https://bitbucket.org/tobias_schaber/openstack.git",
 		cwd     => "/tmp",
+		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
+                creates => "/tmp/openstack",
+	}
+
+	exec {'update-puppet-classes':
+		command => "git pull",
+		cwd     => "/tmp/openstack",
 		path 	=> ['/usr/sbin/', '/bin/', '/sbin/', '/usr/bin'],
 	}
 
