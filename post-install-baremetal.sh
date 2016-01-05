@@ -8,7 +8,7 @@ sudo apt-get install --yes openssh-server git
 cd $HOME
 
 # clone the foreman installer puppet module from git
-git clone https://bitbucket.org/tobias_schaber/theforeman.git
+git clone https://github.com/tobiasschaber/theforeman.git
 
 sudo cp theforeman/interfaces /etc/network/
 

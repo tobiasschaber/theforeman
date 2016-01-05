@@ -9,7 +9,7 @@ sudo apt-get install --yes git
 cd $HOME
 
 # clone the foreman installer puppet module from git
-git clone https://bitbucket.org/tobias_schaber/theforeman.git
+git clone https://github.com/tobiasschaber/theforeman.git
 
 
 wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
